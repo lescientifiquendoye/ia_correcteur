@@ -1,0 +1,105 @@
+<div class="flex min-h-screen flex-col items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+      <h2 class="text-2xl font-bold text-center">Créer un compte</h2>
+      <p class="text-sm text-gray-500 text-center mb-4">
+        Remplissez le formulaire ci-dessous pour créer votre compte
+      </p>
+  
+      <!-- Tabs -->
+      <div class="flex justify-around border-b mb-4">
+        <button 
+          class="p-2 w-1/2 text-center font-semibold"
+          [ngClass]="{ 'border-b-2 border-blue-500 text-blue-500': activeTab === 'student' }"
+          (click)="switchTab('student')">
+          Étudiant
+        </button>
+        <button 
+          class="p-2 w-1/2 text-center font-semibold"
+          [ngClass]="{ 'border-b-2 border-blue-500 text-blue-500': activeTab === 'professor' }"
+          (click)="switchTab('professor')">
+          Professeur
+        </button>
+      </div>
+  
+      <!-- Form Étudiant -->
+      <form *ngIf="activeTab === 'student'" [formGroup]="studentForm" (ngSubmit)="login()" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium">Prénom</label>
+            <input type="text" formControlName="nom" class="input" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Nom</label>
+            <input type="text" formControlName="prenom" class="input" required />
+          </div>
+        </div>
+        <label class="block text-sm font-medium">Email</label>
+        <input type="email" formControlName="email" class="input" required />
+  
+        <label class="block text-sm font-medium">Numéro étudiant</label>
+        <input type="text" formControlName="studentId" class="input" required />
+  
+        <label class="block text-sm font-medium">Classe</label>
+        <select formControlName="class" class="input">
+          <option value="">Sélectionnez votre classe</option>
+          <option value="l1">Licence 1</option>
+          <option value="l2">Licence 2</option>
+          <option value="l3">Licence 3</option>
+          <option value="m1">Master 1</option>
+          <option value="m2">Master 2</option>
+        </select>
+  
+        <label class="block text-sm font-medium">Mot de passe</label>
+        <input type="password" formControlName="password" class="input" required />
+  
+        <label class="block text-sm font-medium">Confirmer le mot de passe</label>
+        <input type="password" formControlName="confirmPassword" class="input" required />
+  
+        <button type="submit" class="btn-primary w-full" [disabled]="isLoading">
+          {{ isLoading ? "Création en cours..." : "Créer un compte" }}
+        </button>
+      </form>
+  
+      <!-- Form Professeur -->
+      <form *ngIf="activeTab === 'professor'" [formGroup]="professorForm" (ngSubmit)="login()" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium">Prénom</label>
+            <input type="text" formControlName="prenom" class="input" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Nom</label>
+            <input type="text" formControlName="nom" class="input" required />
+          </div>
+        </div>
+        <label class="block text-sm font-medium">Email</label>
+        <input type="email" formControlName="email" class="input" required />
+  
+        <!-- <label class="block text-sm font-medium">Département</label>
+        <select formControlName="department" class="input">
+          <option value="">Sélectionnez votre département</option>
+          <option value="informatique">Informatique</option>
+          <option value="mathematiques">Mathématiques</option>
+          <option value="physique">Physique</option>
+          <option value="chimie">Chimie</option>
+          <option value="biologie">Biologie</option>
+        </select>[disabled]="isLoading" -->
+  
+        <label class="block text-sm font-medium">Mot de passe</label>
+        <input type="password" formControlName="password" class="input" required />
+  
+        <label class="block text-sm font-medium">Confirmer le mot de passe</label>
+        <input type="password" formControlName="confirmPassword" class="input" required />
+  
+        <button type="submit" class="btn-primary w-full" >
+          {{ isLoading ? "Création en cours..." : "Créer un compte" }}
+        </button>
+      </form>
+  
+      <p class="text-sm text-center text-gray-500 mt-4">
+        Vous avez déjà un compte ?
+        <a routerLink="/connexion" class="text-blue-500 hover:underline">Se connecter</a>
+      </p>
+    </div>
+  </div>
+  

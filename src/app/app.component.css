@@ -1,0 +1,13 @@
+.text-muted-foreground {
+    color: #6b7280;
+  }
+  .bg-primary\/5 {
+    background-color: rgba(59, 130, 246, 0.05);
+  }
+  .bg-primary\/10 {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  .text-primary {
+    color: #2563eb;
+  }
+  

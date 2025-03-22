@@ -1,0 +1,72 @@
+<div class="flex h-full bg-gray-100">
+  <!-- NAVIGATION FIXÉE À GAUCHE -->
+  <div class="w-1/5 fixed  h-screen">
+    <app-pro-nav></app-pro-nav>
+  </div>
+
+  <!-- CONTENU PRINCIPAL (DASHBOARD) -->
+  <div class="flex-1 ml-[20%] p-4 overflow-auto">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Examens créés -->
+      <div class="bg-white shadow-md p-4 rounded-lg">
+        <div class="flex justify-between items-center pb-2">
+          <h3 class="text-sm font-medium">Examens créés</h3>
+          <span class="text-gray-500">📄</span>
+        </div>
+        <div class="text-2xl font-bold">12</div>
+        <p class="text-xs text-gray-500">+2 depuis le mois dernier</p>
+        <a routerLink="/dashboard/examens" class="block mt-4 bg-blue-500 text-white text-center py-2 rounded">Voir tous</a>
+      </div>
+
+      <!-- Étudiants -->
+      <div class="bg-white shadow-md p-4 rounded-lg">
+        <div class="flex justify-between items-center pb-2">
+          <h3 class="text-sm font-medium">Étudiants</h3>
+          <span class="text-gray-500">👨‍🎓</span>
+        </div>
+        <div class="text-2xl font-bold">87</div>
+        <p class="text-xs text-gray-500">+14 depuis le mois dernier</p>
+        <a routerLink="/dashboard/etudiants" class="block mt-4 bg-blue-500 text-white text-center py-2 rounded">Voir tous</a>
+      </div>
+
+      <!-- Taux de réussite -->
+      <div class="bg-white shadow-md p-4 rounded-lg">
+        <div class="flex justify-between items-center pb-2">
+          <h3 class="text-sm font-medium">Taux de réussite</h3>
+          <span class="text-gray-500">📈</span>
+        </div>
+        <div class="text-2xl font-bold">78%</div>
+        <p class="text-xs text-gray-500">+5% depuis le dernier semestre</p>
+        <a routerLink="/dashboard/resultats" class="block mt-4 bg-blue-500 text-white text-center py-2 rounded">Voir stats</a>
+      </div>
+
+      <!-- Actions rapides -->
+      <div class="md:col-span-2 bg-white shadow-md p-4 rounded-lg">
+        <h3 class="font-medium">Actions rapides</h3>
+        <p class="text-xs text-gray-500">Créez un examen ou consultez les résultats</p>
+        <div class="grid gap-4 md:grid-cols-2 mt-4">
+          <a routerLink="/examens/creer" class="block bg-green-500 text-white text-center py-2 rounded">➕ Créer un examen</a>
+          <a routerLink="/dashboard/resultats" class="block bg-gray-200 text-center py-2 rounded">📊 Voir résultats</a>
+        </div>
+      </div>
+
+      <!-- Examens récents -->
+      <div class="md:col-span-2 lg:col-span-3 bg-white shadow-md p-4 rounded-lg">
+        <h3 class="font-medium">Examens récents</h3>
+        <p class="text-xs text-gray-500">Vos derniers examens</p>
+        <div class="mt-4 space-y-4">
+          <div *ngFor="let exam of exams" class="flex justify-between border-b pb-4">
+            <div>
+              <p class="font-medium">{{ exam.title }}</p>
+              <p class="text-sm text-gray-500">Date: {{ exam.date }}</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <p class="text-sm text-gray-500">{{ exam.submissions }}/{{ exam.total }} soumissions</p>
+              <a [routerLink]="'/examens/' + exam.id" class="text-blue-500">Voir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

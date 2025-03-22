@@ -1,0 +1,28 @@
+<div class="flex md:hidden">
+    <button (click)="toggleMenu()" class="md:hidden p-2 border rounded">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <div *ngIf="isOpen" class="absolute top-12 left-0 bg-white shadow-md w-56 p-2">
+      <a *ngFor="let route of filteredRoutes" [routerLink]="route.href" 
+         [class.font-medium]="route.active" class="flex items-center p-2 hover:text-primary">
+        <i class="mr-2" [class]="'fas fa-' + route.icon"></i> {{ route.label }}
+      </a>
+      <ng-container *ngIf="userRole">
+        <a routerLink="/profile" class="flex items-center p-2 hover:text-primary">
+          <i class="fas fa-user mr-2"></i> Profil
+        </a>
+        <a routerLink="/logout" class="flex items-center p-2 hover:text-primary">
+          <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
+        </a>
+      </ng-container>
+    </div>
+  </div>
+  
+  <nav class="hidden md:flex items-center space-x-4">
+    <a *ngFor="let route of filteredRoutes" [routerLink]="route.href" 
+       [class.text-primary]="route.active" class="text-sm font-medium transition-colors hover:text-primary flex items-center">
+      <i class="mr-2" [class]="'fas fa-' + route.icon"></i> {{ route.label }}
+    </a>
+  </nav>
+  

@@ -1,0 +1,18 @@
+<div class="flex h-full bg-gray-100">
+    <!-- NAVIGATION FIXÉE À GAUCHE -->
+    <div class="w-1/5 fixed  h-screen">
+      <app-etu-nav></app-etu-nav>
+    </div>
+    <div class="bg-white shadow-lg rounded-lg p-4 md:col-span-2 lg:col-span-3">
+        <h2 class="text-lg font-semibold border-b pb-2">Résultats récents</h2>
+        <div class="space-y-4 mt-4">
+          <div *ngFor="let result of recentResults" class="border-b pb-2 flex justify-between">
+            <div>
+              <p class="font-medium">{{ result.title }}</p>
+              <p class="text-sm text-gray-500">Date: {{ result.date }}</p>
+              <p class="text-sm">Note: <span class="font-semibold">{{ result.grade }}</span></p>
+            </div>
+            <a [routerLink]="'/resultats/' + result.id" class="text-blue-600 hover:underline">Détails</a>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,87 @@
+<div class="flex h-full bg-gray-100">
+    <!-- NAVIGATION FIXÉE À GAUCHE -->
+    <div class="w-1/5 fixed  h-screen">
+      <app-etu-nav></app-etu-nav>
+    </div>
+<div class="flex-1 ml-[20%] p-4 overflow-auto">
+<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 p-4">
+    <!-- Examens à venir -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <div class="flex items-center justify-between border-b pb-2">
+        <h2 class="text-sm font-medium">Examens à venir</h2>
+        <svg class="h-4 w-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </div>
+      <div class="text-2xl font-bold mt-2">{{ exams.length}}</div>
+      <p class="text-xs text-gray-500">Prochain examen dans 2 jours</p>
+      <a routerLink="/examsav" class="block text-center mt-4 py-2 px-4 border rounded-md text-blue-600 hover:bg-blue-50">
+        Voir tous les examens
+      </a>
+    </div>
+  
+    <!-- Examens complétés -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <div class="flex items-center justify-between border-b pb-2">
+        <h2 class="text-sm font-medium">Examens complétés</h2>
+        <svg class="h-4 w-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12l5 5L20 7"></path>
+        </svg>
+      </div>
+      <div class="text-2xl font-bold mt-2">{{reponses.length}}</div>
+      <p class="text-xs text-gray-500">+2 depuis le mois dernier</p>
+      <a routerLink="/dashboard/examens?filter=completed" class="block text-center mt-4 py-2 px-4 border rounded-md text-blue-600 hover:bg-blue-50">
+        Voir les examens complétés
+      </a>
+    </div>
+  
+    <!-- Note moyenne -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <div class="flex items-center justify-between border-b pb-2">
+        <h2 class="text-sm font-medium">Note moyenne</h2>
+        <svg class="h-4 w-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </div>
+      <div class="text-2xl font-bold mt-2">{{moyenne}}</div>
+      <p class="text-xs text-gray-500">+1.2 depuis le dernier semestre</p>
+      <a routerLink="/dashboard/resultats" class="block text-center mt-4 py-2 px-4 border rounded-md text-blue-600 hover:bg-blue-50">
+        Voir mes résultats
+      </a>
+    </div>
+  
+    <!-- Liste des examens à venir -->
+    <div class="bg-white shadow-lg rounded-lg p-4 md:col-span-2 lg:col-span-3">
+      <h2 class="text-lg font-semibold border-b pb-2">Examens à venir</h2>
+      <div class="space-y-4 mt-4">
+        <div *ngFor="let exam of upcomingExams" class="border-b pb-2 flex justify-between">
+          <div>
+            <p class="font-medium">{{ exam.title }}</p>
+            <p class="text-sm text-gray-500">Date: {{ exam.date }} | Heure: {{ exam.time }}</p>
+            <p class="text-sm text-gray-500">Professeur: {{ exam.professor }}</p>
+          </div>
+          <a [routerLink]="'/examens/' + exam.id" class="text-blue-600 hover:underline">Détails</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Résultats récents -->
+    <div class="bg-white shadow-lg rounded-lg p-4 md:col-span-2 lg:col-span-3">
+      <h2 class="text-lg font-semibold border-b pb-2">Résultats récents</h2>
+      <div class="space-y-4 mt-4">
+        <div *ngFor="let result of recentResults" class="border-b pb-2 flex justify-between">
+          <div>
+            <p class="font-medium">{{ result.title }}</p>
+            <p class="text-sm text-gray-500">Date: {{ result.date }}</p>
+            <p class="text-sm">Note: <span class="font-semibold">{{ result.grade }}</span></p>
+          </div>
+          <a [routerLink]="'/resultats/' + result.id" class="text-blue-600 hover:underline">Détails</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

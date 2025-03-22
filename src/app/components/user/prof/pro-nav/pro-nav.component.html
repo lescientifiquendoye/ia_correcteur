@@ -1,0 +1,15 @@
+<div class="w-full h-screen bg-white p-2">
+    <ul class="space-y-2">
+      <li *ngFor="let item of menuItems">
+        <a
+          [routerLink]="item.route"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+        >
+          
+          <span class="material-icons text-lg mr-3">{{ item.icon }}</span>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  

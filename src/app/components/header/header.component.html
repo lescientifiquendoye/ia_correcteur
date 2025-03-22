@@ -1,0 +1,52 @@
+<header class="bg-white shadow-md position-fixed top-0 left-0 right-0 z-10">
+    <div class="container mx-auto px-4 flex justify-between items-center py-3">
+      <!-- Logo -->
+      <a routerLink="/" class="text-xl font-bold text-primary">IA CORRECTEUR</a>
+  
+      <!-- Navigation desktop -->
+      <nav class="hidden md:flex items-center space-x-4 lg:space-x-6">
+        <a *ngFor="let route of filteredRoutes"
+           [routerLink]="route.href"
+           class="text-sm font-medium transition-colors hover:text-primary flex items-center"
+           [class.text-primary]="isActive(route.href)"
+           [class.text-muted-foreground]="!isActive(route.href)">
+          <svg class="mr-2 h-4 w-4" [attr.data-icon]="route.icon"></svg>
+          {{ route.label }}
+        </a>
+      </nav>
+  
+      <!-- Menu mobile -->
+      <div class="md:hidden">
+        <button (click)="toggleMenu()" class="rounded-md border bg-white shadow-md">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Menu mobile déroulant -->
+    <div *ngIf="isOpen" class="md:hidden bg-white shadow-lg border-t">
+      <a *ngFor="let route of filteredRoutes" 
+         [routerLink]="route.href" 
+         class="block p-3 hover:bg-gray-100"
+         [class.font-medium]="isActive(route.href)"
+         [class.text-primary]="isActive(route.href)">
+        <svg class="mr-2 h-4 w-4" [attr.data-icon]="route.icon"></svg>
+        {{ route.label }}
+      </a>
+  
+      <!-- Liens supplémentaires si l'utilisateur est connecté -->
+      <ng-container *ngIf="userRole">
+        <a routerLink="/profile" class="block p-3 hover:bg-gray-100">
+          <svg class="mr-2 h-4 w-4" data-icon="user"></svg>
+          Profil
+        </a>
+        <a routerLink="/logout" class="block p-3 hover:bg-gray-100">
+          <svg class="mr-2 h-4 w-4" data-icon="logout"></svg>
+          Déconnexion
+        </a>
+      </ng-container>
+    </div>
+  </header>
+  
