@@ -1,0 +1,18 @@
+{
+  "routes": {
+    "/": {},
+    "/connexion": {},
+    "/creerexamen": {},
+    "/depot-exams": {},
+    "/details": {},
+    "/edashboard": {},
+    "/eexamens": {},
+    "/examenscreer": {},
+    "/examsav": {},
+    "/inscription": {},
+    "/mesetudiant": {},
+    "/pdashboard": {},
+    "/resultats": {},
+    "/revoircorrect": {}
+  }
+}

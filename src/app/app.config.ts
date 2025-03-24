@@ -13,3 +13,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient() // Service HTTP
   ]
 };
+export default {
+  routes: {
+    "pdashboard/:id": { renderMode: "dynamic" },
+    "details/:id": { renderMode: "dynamic" }
+  }
+};
+

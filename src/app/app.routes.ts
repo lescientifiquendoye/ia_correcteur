@@ -28,8 +28,9 @@ export const routes: Routes = [
         path: 'inscription',
         component: InscriptionComponent
     },
+    //   /:id'
     {
-        path: 'pdashboard/:id',  
+       path: 'pdashboard', 
         component: ProDashboardComponent,canActivate: [AuthGuard] 
     },
     {
@@ -68,8 +69,9 @@ export const routes: Routes = [
         path: 'resultats',
         component: ResultatsComponent,canActivate: [AuthGuard]
     },
+    //   /:id'
     {
-        path: 'details/:id',
+        path: 'details',
         component: EexamensComponent,canActivate: [AuthGuard]
     },
    // { path: '', redirectTo: '/connexion', pathMatch: 'full' },
