@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UpcomingExamsComponent implements OnInit {
   allexams: { id: number; title: string; date: string; time: string; professor: string }[] = [];
-
+  
 
   constructor(private examService: EtuDashboardComponent,private router: Router) {}
 

@@ -32,7 +32,7 @@
       </div>
       <div class="text-2xl font-bold mt-2">{{reponses.length}}</div>
       <p class="text-xs text-gray-500">+2 depuis le mois dernier</p>
-      <a routerLink="/dashboard/examens?filter=completed" class="block text-center mt-4 py-2 px-4 border rounded-md text-blue-600 hover:bg-blue-50">
+      <a routerLink="/resultats" class="block text-center mt-4 py-2 px-4 border rounded-md text-blue-600 hover:bg-blue-50">
         Voir les examens complétés
       </a>
     </div>
@@ -78,7 +78,7 @@
             <p class="text-sm text-gray-500">Date: {{ result.date }}</p>
             <p class="text-sm">Note: <span class="font-semibold">{{ result.grade }}</span></p>
           </div>
-          <a [routerLink]="'/resultats/' + result.id" class="text-blue-600 hover:underline">Détails</a>
+          <a [routerLink]="['/details',result.id]" class="text-blue-600 hover:underline">Détails</a>
         </div>
       </div>
     </div>

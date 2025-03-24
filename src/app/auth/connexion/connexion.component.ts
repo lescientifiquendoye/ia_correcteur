@@ -22,7 +22,7 @@ export class ConnexionComponent {
   activeTab: 'student' | 'professor' = 'student';
   isLoading = false;
   studentForm: FormGroup;
-  professorForm: FormGroup;
+ // professorForm: FormGroup;
 
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
     this.studentForm = this.fb.group({
@@ -30,18 +30,18 @@ export class ConnexionComponent {
       password: ['', Validators.required]
     }, );
 
-    this.professorForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    },);
+    // this.professorForm = this.fb.group({
+    //   email: ['', [Validators.required, Validators.email]],
+    //   password: ['', Validators.required]
+    // },);
   }
 
-  switchTab(tab: 'student' | 'professor') {
-    this.activeTab = tab;
-  }
+  // switchTab(tab: 'student' | 'professor') {
+  //   this.activeTab = tab;
+  // }
 
   login() {
-    const activeForm = this.activeTab === 'student' ? this.studentForm : this.professorForm;
+    const activeForm = this.studentForm ;
 
     if (activeForm.invalid) {
       alert("Veuillez remplir tous les champs correctement !");
@@ -57,10 +57,13 @@ export class ConnexionComponent {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }).subscribe({
       next: (response: any) => {
-        console.log('Connexion réussie', response);
         localStorage.setItem('auth_token', response.tokens.access);
         alert("Connexion réussie !");
-        this.router.navigate(['/pdashboard']);
+        if(response['user']['role'] == "PROFESSEUR") {
+        this.router.navigate([`/pdashboard/${response['user']['profile']['id'].toString()}`]);///${response.user.id.toString()}
+        }else {
+        this.router.navigate([`/edashboard`]);///${response.user.id.toString()}
+        }
         this.isLoading = false;
       },
       error: (error) => {

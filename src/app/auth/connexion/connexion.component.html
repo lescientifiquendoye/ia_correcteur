@@ -7,15 +7,13 @@
     <div class="flex justify-around my-4 border-b">
       <button 
         [class.active]="activeTab === 'student'" 
-        (click)="switchTab('student')" 
         class="px-4 py-2 focus:outline-none" 
         [class.border-b-2]="activeTab === 'student'" 
         [class.border-blue-500]="activeTab === 'student'">
         Étudiant
       </button>
       <button 
-        [class.active]="activeTab === 'professor'" 
-        (click)="switchTab('professor')" 
+       
         class="px-4 py-2 focus:outline-none" 
         [class.border-b-2]="activeTab === 'professor'" 
         [class.border-blue-500]="activeTab === 'professor'">

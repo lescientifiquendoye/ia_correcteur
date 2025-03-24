@@ -26,7 +26,7 @@
     </div>
   
     <!-- Menu mobile déroulant -->
-    <div *ngIf="isOpen" class="md:hidden bg-white shadow-lg border-t">
+    <div *ngIf="isOpen" class=" bg-white shadow-lg border-t">
       <a *ngFor="let route of filteredRoutes" 
          [routerLink]="route.href" 
          class="block p-3 hover:bg-gray-100"

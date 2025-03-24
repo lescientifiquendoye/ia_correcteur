@@ -18,7 +18,7 @@ const passwordMatchValidator: ValidatorFn = (control: AbstractControl): Validati
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent {
-  activeTab: 'student' | 'professor' = 'student';
+  activeTab: 'student' | 'professor' = 'professor';
   isLoading = false;
   studentForm: FormGroup;
   professorForm: FormGroup;
@@ -42,7 +42,7 @@ export class InscriptionComponent {
   }
 
   switchTab(tab: 'student' | 'professor') {
-    this.activeTab = tab;
+    this.activeTab = 'professor';
   }
 
   login() {
@@ -63,9 +63,15 @@ export class InscriptionComponent {
     }).subscribe({
       next: (response: any) => {
         console.log('Inscription réussie', response);
-        localStorage.setItem('auth_token', response.response.tokens.access);
+        localStorage.setItem('auth_token', response['tokens']['access']);
         alert("Inscription réussie !");
-        this.router.navigate(['/edashboard']);
+
+        if(response['user']['role'] == "PROFESSEUR") {
+          this.router.navigate([`/pdashboard/${response['user']['id'].toString()}`]);///${response.user.id.toString()}
+          }else {
+          this.router.navigate([`/edashboard`]);///${response.user.id.toString()}
+          }
+
         this.isLoading = false;
       },
       error: (error) => {

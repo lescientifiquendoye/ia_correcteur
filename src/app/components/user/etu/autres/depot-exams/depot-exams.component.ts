@@ -34,8 +34,8 @@ constructor(private http: HttpClient) {
 
     const formData = new FormData();
     if (this.selectedFile) {
-      formData.append("fichier", this.selectedFile,'fichier.pdf');  // "fichier" est le nom du champ attendu par l'API
-      formData.append("evaluation_id", "2");
+      formData.append("fichier", this.selectedFile,'fichier');  // "fichier" est le nom du champ attendu par l'API
+      formData.append("evaluation_id", "4");
     formData.append("format", this.selectedFile.type === "text/plain" ? "text" : "pdf");
   
    

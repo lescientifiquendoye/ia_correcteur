@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 
 interface MenuItem {
   icon: string;
@@ -10,14 +9,12 @@ interface MenuItem {
 }
 
 @Component({
-  selector: 'app-pro-nav',
+  selector: 'app-prof-nav',
   imports: [CommonModule, RouterModule],
-  templateUrl: './pro-nav.component.html',
-  styleUrl: './pro-nav.component.css'
+  templateUrl: './prof-nav.component.html',
+  styleUrl: './prof-nav.component.css'
 })
-
-
-export class ProNavComponent {
+export class ProfNavComponent {
 
   menuItems: MenuItem[] = [
     { icon: 'grid_view', label: "Vue d'ensemble", route: '/overview' },

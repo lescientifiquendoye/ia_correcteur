@@ -1,0 +1,24 @@
+<div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ reponses.titre }}</h2>
+  
+    <div class="mb-4 space-y-2">
+      <p class="text-gray-700"><strong>📚 Matière :</strong> {{ reponses.matiere }}</p>
+      <p class="text-gray-700"><strong>🏫 Classe :</strong> {{ reponses.classe }}</p>
+      <p class="text-gray-700"><strong>📅 Date de creation :</strong> {{`${reponses.date_creation}` | date:'dd/MM/yyyy à HH:mm' }}</p>
+      <p class="text-gray-700"><strong>⌛ Date limite :</strong> {{`${reponses.date_limite}` | date:'dd/MM/yyyy à HH:mm' }}</p>
+      <p class="text-gray-700"><strong>📊 Barème :</strong> {{ reponses.bareme }}</p>
+    </div>
+  
+    <div class="mt-6">
+      <h3 class="text-lg font-semibold text-gray-800">📝 Réponses aux questions</h3>
+      <div *ngFor="let rep of reponses.reponses_questions" class="bg-gray-100 p-4 rounded-lg my-3">
+        <p class="text-gray-800"><strong>❓ Question :</strong> {{ rep.question }}</p><div class="p-4 bg-white rounded-lg shadow-md">
+            <p class="text-lg font-semibold text-gray-800">✅ Réponse de l'ia :</p>
+            <div class="text-gray-700 leading-relaxed" [innerHTML]="rep.reponse_ia"></div>
+          </div>
+          
+        <p class="text-gray-700"><strong>📏 Barème :</strong> {{ rep.bareme }}</p>
+      </div>
+    </div>
+  </div>
+  

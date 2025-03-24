@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProNavComponent } from './pro-nav.component';
+import { ExamensCreerComponent } from './examens-creer.component';
 
-describe('ProNavComponent', () => {
-  let component: ProNavComponent;
-  let fixture: ComponentFixture<ProNavComponent>;
+describe('ExamensCreerComponent', () => {
+  let component: ExamensCreerComponent;
+  let fixture: ComponentFixture<ExamensCreerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProNavComponent]
+      imports: [ExamensCreerComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProNavComponent);
+    fixture = TestBed.createComponent(ExamensCreerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
